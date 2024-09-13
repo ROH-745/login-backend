@@ -3,7 +3,7 @@ const sequelize = require("./db")
 const User = require("./models/User")(sequelize);
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { where } = require("sequelize");
+// const { where } = require("sequelize");
 
 
 const app = express();
@@ -98,4 +98,11 @@ app.get("/userinfo", verifyToken, async (req, res) => {
     res.status(500).json({ message: "Server Error" });
     
   }
+});
+
+
+const PORT = process.env.PORT || 4000;
+app.listen(PORT, () => {
+  console.log(`Server is running in port ${PORT}`);
+  
 });
